@@ -21,7 +21,7 @@ module Api::V1
       if @booking.save
         render json: @booking, status: :created, location: v1_item_path(@booking)
       else
-        render json: @booking.erros, status: :unprocessable_entity
+        render json: @booking.errors, status: :unprocessable_entity
       end
     end
 
