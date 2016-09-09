@@ -22,12 +22,7 @@ Rails.application.routes.draw do
         resources :categories
 
         # Slack Bot
-        namespace :slack do
-          get :list, to: 'slack#list'
-          get :show, to: 'slack#show'
-          post :book, to: 'slack#book'
-          post :return, to: 'slack#return'
-        end
+        post :slack, to: 'slack#parse'
       end
     end
   #end
