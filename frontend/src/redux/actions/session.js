@@ -2,7 +2,12 @@ import * as axios from 'axios';
 
 const loginSuccess = (response) => ({
   type: 'LOGIN_SUCCESS',
-  data: response.data
+  data: {
+    id: response.data.id,
+    name: response.data.name,
+    email: response.data.email,
+    accessToken: response.data.access_token
+  }
 })
 
 const loginError = (response) => ({

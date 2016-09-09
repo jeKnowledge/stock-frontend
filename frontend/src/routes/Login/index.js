@@ -5,6 +5,6 @@ export default (store) => ({
     require.ensure([], (require) => {
       const LoginView = require('./components/LoginView').default
       cb(null, LoginView)
-    }, 'counter')
+    }, 'login')
   }
 })

@@ -1,5 +1,4 @@
 import { injectReducer } from '../../store/reducers'
-import requireLogin from '../requireLogin'
 
 export default (store) => ({
   path: 'counter',

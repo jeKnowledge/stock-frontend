@@ -3,7 +3,7 @@ const initialState = {
     id: null,
     name: null,
     email: null,
-    authToken: null
+    accessToken: null
   },
   fetching: false,
   fetchingError: null
