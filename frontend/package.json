@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-starter-kit",
-  "version": "3.0.0-alpha.2",
-  "description": "Get started with React, Redux, and React-Router!",
+  "name": "stock",
+  "version": "0.0.1",
+  "description": "A web application to manage your company inventory",
   "main": "index.js",
   "engines": {
     "node": ">=4.2.0",
@@ -72,10 +72,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davezuko/react-redux-starter-kit.git"
+    "url": "git+https://github.com/jbernardo95/stock.git"
   },
-  "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
-  "license": "MIT",
+  "author": "jeKnowledge (http://jeknowledge.com)",
+  "license": "",
   "dependencies": {
     "axios": "^0.13.1",
     "babel-cli": "^6.5.1",
