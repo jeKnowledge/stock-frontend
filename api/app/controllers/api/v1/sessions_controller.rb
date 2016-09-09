@@ -10,13 +10,13 @@ module Api::V1
         user.refresh_access_token!
         render json: user, status: :ok
       else
-        render json: { message: 'Bad credentials' }, status: :unauthorized
+        render json: { message: 'The email and password you provided did not match.' }, status: :unauthorized
       end
     end
 
     def destroy
       current_user.expire_access_token!
-      render json: { message: 'Logged out' }, status: :ok
+      render json: { message: 'Logged out.' }, status: :ok
     end
 
     private

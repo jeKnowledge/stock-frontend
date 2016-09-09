@@ -22,7 +22,7 @@ module Api::V1
 
     def destroy
       current_user.destroy
-      render json: { message: 'User deleted' }, status: :ok
+      render json: { message: 'User deleted.' }, status: :ok
     end
 
     private
