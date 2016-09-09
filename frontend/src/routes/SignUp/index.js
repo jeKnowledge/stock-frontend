@@ -3,7 +3,7 @@ export default (store) => ({
 
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
-      const SignUpView = require('./components/SignUpView').default
+      const SignUpView = require('./SignUpView').default
       cb(null, SignUpView)
     }, 'sign_up')
   }

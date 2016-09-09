@@ -1,7 +1,7 @@
 import React from 'react'
 import { IndexLink, Link } from 'react-router'
 import classes from './Header.scss'
-import HeaderLinks from 'containers/HeaderLinks'
+import HeaderLinks from 'components/HeaderLinks'
 
 export const Header = () => (
   <nav className="navbar navbar-light bg-faded">

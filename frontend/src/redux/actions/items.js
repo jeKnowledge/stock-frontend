@@ -5,7 +5,7 @@ const newItemSuccess = (response) => ({
   item: {
     id: response.data.id,
     name: response.data.name,
-    email: response.data.photo_url
+    photo_url: response.data.photo_url
   }
 })
 

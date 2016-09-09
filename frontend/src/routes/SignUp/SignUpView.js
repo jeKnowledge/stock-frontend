@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
+import requireUnauthentication from '../../utils/requireUnauthentication' 
 import actions from 'redux/actions/session'
-import requireUnauthentication from '../../requireUnauthentication' 
 
-import SignUpForm from 'containers/SignUpForm'
+import SignUpForm from 'components/SignUpForm'
 
 const mapDispatchToProps = {
   signUp: actions.signUp,
