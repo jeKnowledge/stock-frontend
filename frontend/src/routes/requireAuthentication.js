@@ -23,9 +23,7 @@ const requireAuthentication = (Component) => {
       if (this.props.isAuthenticated === false) return null;
 
       return(
-        <div>
-          <Component {...this.props} />
-        </div>
+        <Component {...this.props} />
       );
     }
   };

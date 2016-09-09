@@ -1,10 +1,12 @@
+const blankUser = {
+  id: null,
+  name: null,
+  email: null,
+  accessToken: null
+}
+
 const initialState = {
-  user: {
-    id: null,
-    name: null,
-    email: null,
-    accessToken: null
-  },
+  user: blankUser,
   fetching: false,
   fetchingError: null
 }
@@ -29,6 +31,11 @@ export default function sessionReducer(state = initialState, action) {
       return Object.assign({}, state, {
         fetching: false,
         fetchingError: action.error
+      });
+
+    case 'LOGOUT_SUCCESS':
+      return Object.assign({}, state, {
+        user: blankUser
       });
 
     default:

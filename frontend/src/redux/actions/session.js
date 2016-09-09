@@ -91,9 +91,34 @@ const signUp = ({name, email, password}) => {
   }
 }
 
+const logoutSuccess = (response) => ({
+  type: 'LOGOUT_SUCCESS',
+  message: response.data.message
+});
+
+const logout = () => {
+  return (dispatch, getState) => {
+    let accessToken = getState().session.user.accessToken;
+
+    let options = {
+      url: 'http://localhost:4000/v1/sessions', // FIX hardcoded url
+      method: 'delete',
+      headers: {
+        'Authorization': `Token token=${accessToken}`,
+      }
+    }
+
+    return axios.request(options)
+      .then((response) => {
+        dispatch(logoutSuccess(response));
+      })
+  }
+}
+
 const actions = {
   signIn,
-  signUp
+  signUp,
+  logout
 }
 
 export default actions;
