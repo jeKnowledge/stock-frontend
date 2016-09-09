@@ -1,24 +1,16 @@
-# README
+# stock-api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Database Setup
 
-Things you may want to cover:
+1. Install PostgresSQL (version >= 9.4)
+2. Create user to manage the database:
 
-* Ruby version
+```shell
+psql
 
-* System dependencies
+CREATE USER stock;
+ALTER USER betar WITH SUPERUSER;
+\q
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3. Run `rake db:drop db:create db:migrate` to create the database
