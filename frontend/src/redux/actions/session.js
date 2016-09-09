@@ -1,13 +1,14 @@
 import * as axios from 'axios';
+import { setCookie } from '../../utils/cookies'
 
 const signInSuccess = (response) => ({
   type: 'SIGN_IN_SUCCESS',
-  data: {
+  user: {
     id: response.data.id,
     name: response.data.name,
-    email: response.data.email,
-    accessToken: response.data.access_token
-  }
+    email: response.data.email
+  },
+  accessToken: response.data.access_token
 })
 
 const signInError = (response) => ({
@@ -38,6 +39,7 @@ const signIn = ({email, password}) => {
     return axios.request(options)
       .then((response) => {
         dispatch(signInSuccess(response));
+        setCookie('stock_access_token', response.data.access_token, 1);
       })
       .catch((error) => {
         dispatch(signInError(error.response));
@@ -47,12 +49,12 @@ const signIn = ({email, password}) => {
 
 const signUpSuccess = (response) => ({
   type: 'SIGN_UP_SUCCESS',
-  data: {
+  user: {
     id: response.data.id,
     name: response.data.name,
     email: response.data.email,
-    accessToken: response.data.access_token
-  }
+  },
+  accessToken: response.data.access_token
 });
 
 const signUpError = (response) => ({
@@ -84,6 +86,7 @@ const signUp = ({name, email, password}) => {
     return axios.request(options)
       .then((response) => {
         dispatch(signUpSuccess(response));
+        setCookie('stock_access_token', response.data.access_token, 1);
       })
       .catch((error) => {
         dispatch(signUpError(error.response));
@@ -98,7 +101,7 @@ const logoutSuccess = (response) => ({
 
 const logout = () => {
   return (dispatch, getState) => {
-    let accessToken = getState().session.user.accessToken;
+    let accessToken = getState().session.accessToken;
 
     let options = {
       url: 'http://localhost:4000/v1/sessions', // FIX hardcoded url
@@ -111,6 +114,7 @@ const logout = () => {
     return axios.request(options)
       .then((response) => {
         dispatch(logoutSuccess(response));
+        setCookie('stock_access_token', '', 1);
       })
   }
 }

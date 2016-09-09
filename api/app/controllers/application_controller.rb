@@ -14,7 +14,8 @@ class ApplicationController < ActionController::API
   def token_authentication
     authenticate_with_http_token do |token, options|
       @current_user = User.find_by(access_token: token)
-      @current_user && !@current_user.access_token_expired?
+      # TODO: handle session expiration verification
+      #@current_user && !@current_user.access_token_expired?
     end
   end
 

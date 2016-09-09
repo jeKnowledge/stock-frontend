@@ -29,7 +29,7 @@ const requireAuthentication = (Component) => {
   };
 
   const mapStateToProps = (state) => ({
-    isAuthenticated: state.session.user.accessToken !== null
+    isAuthenticated: state.session.accessToken !== null
   });
 
   let connectedComponent = connect(mapStateToProps)(AuthenticatedComponent);
