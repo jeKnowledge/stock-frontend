@@ -11,6 +11,7 @@ class NewItemForm extends React.Component {
     e.preventDefault();
     this.props.createItem(this.state);
     this.setState({ name: '', photoUrl: '' });
+    //this.props.onSubmit();
   }
 
   handleChange(e) {
