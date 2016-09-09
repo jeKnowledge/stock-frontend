@@ -8,7 +8,7 @@ module Api::V1
       if @user.save
         render json: @user, status: :created
       else
-        render json: { errors: @user.errors }, status: :unprocessable_entity
+        render json: { message: @user.errors.full_messages.join(', ') }, status: :unprocessable_entity
       end
     end
 
@@ -16,7 +16,7 @@ module Api::V1
       if current_user.update(user_params)
         render json: @user
       else
-        render json: { errors: @user.errors }, status: :unprocessable_entity
+        render json: { message: @user.errors.full_messages.join(', ') }, status: :unprocessable_entity
       end
     end
 
