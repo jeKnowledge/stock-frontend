@@ -86,9 +86,56 @@ const fetchItems = () => {
   }
 }
 
+const bookSuccess = (response) => ({
+  type: 'BOOK_SUCCESS'
+});
+
+const bookError = (response) => ({
+  type: 'BOOK_ERROR'
+});
+
+const book = ({ item_id, start_date, end_date }) => {
+  return (dispatch, getState) => {
+    // TODO protect against consecutive requests
+    //const fetching = getState().items.fetching;
+    //if (fetching) return;
+
+    //dispatch({
+      //type: 'ITEMS_FETCHING'
+    //});
+
+    let accessToken = getState().session.accessToken;
+    //let user_id = getState().session.user.id;
+    let options = {
+      url: 'http://localhost:4000/v1/bookings', // FIX hardcoded url
+      method: 'post',
+      headers: {
+        'Authorization': `Token token=${accessToken}`,
+      },
+      data: {
+        booking: {
+          user_id: 1,
+          item_id,
+          start_date, 
+          end_date
+        }
+      }
+    }
+
+    return axios.request(options)
+      .then((response) => {
+        dispatch(bookSuccess(response));
+      })
+      .catch((error) => {
+        dispatch(bookError(error.response));
+      });
+  }
+}
+
 const actions = {
   createItem,
-  fetchItems
+  fetchItems,
+  book
 };
 
 export default actions;
