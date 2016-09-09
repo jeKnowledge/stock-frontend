@@ -11,6 +11,7 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state);
+    this.setState({ email: '', password: '' });
   }
 
   handleChange(e) {
@@ -20,26 +21,49 @@ class LoginForm extends React.Component {
     this.setState(newState);
   }
 
+  renderError() {
+    if (this.props.session.fetchingError === null) return '';
+    return(
+      <p className="bg-danger">
+        { this.props.session.fetchingError }
+      </p>
+    )
+  }
+
   render() {
-    return (
+    return(
       <form onSubmit={ (e) => this.handleSubmit(e) }>
         <h1>Login Form</h1>
 
-        <input
-          type="email"
-          name="email"
-          value={this.state.email}
-          onChange={ (e) => this.handleChange(e) }
-        />
+        { this.renderError() }
+
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            className="form-control"
+            type="email"
+            name="email"
+            value={this.state.email}
+            onChange={ (e) => this.handleChange(e) }
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            className="form-control"
+            type="password"
+            name="password"
+            value={this.state.password}
+            onChange={ (e) => this.handleChange(e) }
+          />
+        </div>
 
         <input
-          type="password"
-          name="password"
-          value={this.state.password}
-          onChange={ (e) => this.handleChange(e) }
+          className="btn btn-success"
+          type="submit"
+          value="Submit"
         />
-
-        <input type="submit" value="Submit" />
       </form>
     )
   }

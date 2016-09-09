@@ -5,13 +5,16 @@ const loginSuccess = (response) => ({
   data: response.data
 })
 
-const loginError = (error) => ({
+const loginError = (response) => ({
   type: 'LOGIN_ERROR',
-  error: error
+  error: response.data.message
 })
 
 export const login = ({email, password}) => {
   return (dispatch, getState) => {
+    const fetching = getState().session.fetching;
+    if (fetching) return;
+
     dispatch({
       type: 'LOGIN_FETCHING'
     });
@@ -29,11 +32,10 @@ export const login = ({email, password}) => {
 
     return axios.request(options)
       .then((response) => {
-        console.log(response);
         dispatch(loginSuccess(response));
       })
       .catch((error) => {
-        dispatch(loginError(error));
+        dispatch(loginError(error.response));
       });
   }
 }

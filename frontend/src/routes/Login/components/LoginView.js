@@ -5,10 +5,10 @@ import LoginForm from 'components/LoginForm'
 
 const mapDispatchToProps = {
   login: actions.login
-}
+};
 
 const mapStateToProps = (state) => ({
-  //counter: state.counter
-})
+  session: state.session
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
