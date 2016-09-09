@@ -3,9 +3,13 @@ class User < ApplicationRecord
 
   before_create :set_access_token
 
+  # Associations 
   has_many :bookings 
+  has_many :waiting_queues
   has_many :items, through: :bookings
+  has_many :waiting_items, through: :waiting_queues
 
+  # Validations
   validates :name, presence: true
   validates :email, presence: true,
                     uniqueness: true

@@ -15,10 +15,18 @@ Rails.application.routes.draw do
         resources :items
 
         # Bookings
-        resources :bookings
+        resources :bookings, except: [:index]
 
         # Categories
         resources :categories
+
+        # Slack Bot
+        namespace :slack do
+          get :list, to: 'slack#list'
+          get :show, to: 'slack#show'
+          post :book, to: 'slack#book'
+          post :return, to: 'slack#return'
+        end
       end
     end
   #end

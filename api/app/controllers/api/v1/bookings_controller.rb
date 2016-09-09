@@ -9,11 +9,6 @@ module Api::V1
       render json: @bookings
     end
 
-    # GET /bookings/1
-    def show
-      render json: @booking
-    end
-
     # POST /bookings
     def create
       @booking = Booking.new(booking_params)
@@ -21,7 +16,13 @@ module Api::V1
       if @booking.save
         render json: @booking, status: :created, location: v1_item_path(@booking)
       else
-        render json: @booking.errors, status: :unprocessable_entity
+        if @booking.errors.has_key?(:item_already_booked)
+          @waiting_queue = WaitingQueue.create(item: @booking.item,
+                                               user: @booking.user)
+          render json: @waiting_queue, status: :created
+        else
+          render json: @booking.errors, status: :unprocessable_entity
+        end
       end
     end
 
