@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: true
   validates :password_digest, presence: true
+  validates :slack_handler, presence: true
 
   def expire_access_token!
     self.access_token_expiration_date = Time.now

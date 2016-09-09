@@ -28,7 +28,7 @@ module Api::V1
     private
 
     def user_params
-      params.require(:user).permit(:name, :password, :email)
+      params.require(:user).permit(:name, :email, :slack_handler, :password)
     end
   end
 end

@@ -5,13 +5,13 @@ import classes from './SignUpForm.scss'
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', email: '', password: '' };
+    this.state = { name: '', email: '', slack_handler: '', password: '' };
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.signUp(this.state);
-    this.setState({ name: '', email: '', password: '' });
+    this.setState({ name: '', email: '', slack_handler: '', password: '' });
   }
 
   handleChange(e) {
@@ -56,6 +56,17 @@ class SignUpForm extends React.Component {
               type="email"
               name="email"
               value={this.state.email}
+              onChange={ (e) => this.handleChange(e) }
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Slack Handler</label>
+            <input
+              className="form-control"
+              type="text"
+              name="slack_handler"
+              value={this.state.slack_handler}
               onChange={ (e) => this.handleChange(e) }
             />
           </div>

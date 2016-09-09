@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909123215) do
+ActiveRecord::Schema.define(version: 20160909130921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160909123215) do
     t.string   "access_token"
     t.datetime "access_token_expiration_date"
     t.string   "password_digest"
+    t.string   "slack_handler"
   end
 
   create_table "waiting_queues", force: :cascade do |t|

@@ -53,6 +53,7 @@ const signUpSuccess = (response) => ({
     id: response.data.id,
     name: response.data.name,
     email: response.data.email,
+    slack_handler: response.data.slack_handler
   },
   accessToken: response.data.access_token
 });
@@ -62,7 +63,7 @@ const signUpError = (response) => ({
   error: response.data.message
 });
 
-const signUp = ({name, email, password}) => {
+const signUp = ({name, email, slack_handler, password}) => {
   return (dispatch, getState) => {
     const fetching = getState().session.fetching;
     if (fetching) return;
@@ -78,6 +79,7 @@ const signUp = ({name, email, password}) => {
         user: {
           name,
           email,
+          slack_handler,
           password
         }
       }
