@@ -5,7 +5,8 @@ const initialState = {
     email: null,
     authToken: null
   },
-  fetching: false
+  fetching: false,
+  fetchingErrors: null
 }
 
 export default function sessionReducer(state = initialState, action) {
@@ -23,7 +24,8 @@ export default function sessionReducer(state = initialState, action) {
 
     case 'LOGIN_ERROR':
       return Object.assign({}, state, {
-        fetching: false
+        fetching: false,
+        fetchingErrors: action.error
       });
 
     default:

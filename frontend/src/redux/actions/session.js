@@ -19,7 +19,12 @@ export const login = ({email, password}) => {
     let options = {
       url: 'http://localhost:4000/v1/sessions', // FIX hardcoded url
       method: 'post',
-      data: { email: email, password: password }
+      data: {
+        user: {
+          email,
+          password
+        }
+      }
     }
 
     return axios.request(options)
