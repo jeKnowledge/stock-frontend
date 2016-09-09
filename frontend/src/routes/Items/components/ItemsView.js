@@ -1,16 +1,17 @@
-import { connect } from 'react-redux'
-import actions from 'redux/actions/items'
+import React from 'react'
 import requireAuthentication from '../../requireAuthentication' 
 
 import ItemsList from 'components/ItemsList'
+import Modal from 'containers/Modal'
 
-const mapDispatchToProps = {
-};
+const ItemsView = () => (
+  <div>
+    <ItemsList />
 
-const mapStateToProps = (state) => ({
-  items: state.items
-});
+    <Modal id="add-item">
+      <p>kjghdsf</p>
+    </Modal>
+  </div>
+)
 
-let connectedComponent = connect(mapStateToProps, mapDispatchToProps)(ItemsList);
-
-export default requireAuthentication(connectedComponent);
+export default requireAuthentication(ItemsView);

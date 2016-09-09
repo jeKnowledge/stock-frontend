@@ -43,14 +43,32 @@ class HeaderLinks extends React.Component {
     )
   }
 
+  renderAddItemLink() {
+    if (!this.isAuthenticated) {
+      return null;
+    }
+
+    return(
+      <li className="nav-item active">
+        <a 
+          href="#"
+          className="nav-link"
+          onClick={ (e) => { this.props.toggleModal('add-item') } }>
+          Add Item
+        </a>
+      </li>
+    )
+  }
+
   render() {
     return(
       <ul className="nav navbar-nav pull-xs-right">
         <li className="nav-item active">
-          <IndexLink to='/' className="nav-link">
-            Home
+          <IndexLink to='/items' className="nav-link">
+            Items
           </IndexLink>
         </li>
+        { this.renderAddItemLink() }
         { this.renderSignInLink() }
         { this.renderLogoutLink() }
       </ul>

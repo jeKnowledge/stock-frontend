@@ -6,7 +6,9 @@ import HeaderLinks from 'containers/HeaderLinks'
 export const Header = () => (
   <nav className="navbar navbar-light bg-faded">
     <div className="container">
-      <a className="navbar-brand" href="#">Stock</a>
+      <IndexLink to='/' className="navbar-brand">
+        Stock
+      </IndexLink>
 
       <HeaderLinks />
     </div>

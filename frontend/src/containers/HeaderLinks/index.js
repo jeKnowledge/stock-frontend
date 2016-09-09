@@ -1,9 +1,11 @@
 import { connect } from 'react-redux'
-import actions from 'redux/actions/session'
+import sessionActions from 'redux/actions/session'
+import modalsActions from 'redux/actions/modals'
 import HeaderLinks from './HeaderLinks'
 
 const mapDispatchToProps = {
-  logout: actions.logout
+  logout: sessionActions.logout,
+  toggleModal: modalsActions.toggleModal
 };
 
 const mapStateToProps = (state) => ({
