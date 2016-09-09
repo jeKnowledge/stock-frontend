@@ -19,7 +19,18 @@ class Modal extends React.Component {
         <div className={`modal ${this.displayClass}`}>
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
-              { this.props.children }
+              <div className="modal-header">
+                <button
+                  type="button"
+                  className="close"
+                  onClick={ (e) => { this.props.toggleModal(this.props.id) } }>
+                  <span>&times;</span>
+                </button>
+                <h4 className="modal-title">{this.props.title}</h4>
+              </div>
+              <div className="modal-body">
+                { this.props.children }
+              </div>
             </div>
           </div>
         </div>

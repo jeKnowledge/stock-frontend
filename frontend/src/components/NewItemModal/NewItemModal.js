@@ -11,23 +11,14 @@ class NewItemModal extends React.Component {
 
   render() {
     return(
-      <Modal id="new-item">
-        <div className="modal-header">
-          <button
-            type="button"
-            className="close"
-            onClick={ (e) => {this.props.toggleModal('new-item') } }>
-            <span>&times;</span>
-          </button>
-          <h4 className="modal-title">Create New Item</h4>
-        </div>
-        <div className="modal-body">
-          <NewItemForm
-            onSubmit={ (e) => { this.props.toggleModal('new-item') } }/>
-        </div>
+      <Modal
+        id="item-new"
+        title="Create New Item">
+        <NewItemForm
+          onSubmit={ (e) => { this.props.toggleModal('item-new') } }/>
       </Modal>
-    )
+    );
   }
 }
 
-export default ItemsList;
+export default NewItemModal;
