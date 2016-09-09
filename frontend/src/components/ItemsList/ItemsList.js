@@ -2,24 +2,24 @@ import React from 'react'
 import classes from './ItemsList.scss'
 import Item from 'components/Item'
 
-
 class ItemsList extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  renderItems() {
+    return this.props.items.map((item) => {
+      return(<Item key={item.id} data={item} />)
+    });
+  }
   
   render() {
-    // VOU DAR RENDER DOS ITEMS TODOS QUE TENHO GUARDADOS NA BASE DE DADOS
-    //
-
-    console.log(this.props.items)
     return(
-      // map de props e render de cada prop
-      <div>
-        { this.props.items.map((item) => { return(<Item data={item} /> )}) }
+      <div className="row">
+        { this.renderItems() }
       </div>
     )
   }
 }
 
-export default ItemsList
+export default ItemsList;

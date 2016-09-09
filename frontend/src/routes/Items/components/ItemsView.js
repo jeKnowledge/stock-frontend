@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import actions from 'redux/actions/items'
+import requireAuthentication from '../../requireAuthentication' 
 
 import ItemsList from 'components/ItemsList'
 
@@ -10,6 +11,6 @@ const mapStateToProps = (state) => ({
   items: state.items
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);
+let connectedComponent = connect(mapStateToProps, mapDispatchToProps)(ItemsList);
 
-
+export default requireAuthentication(connectedComponent);

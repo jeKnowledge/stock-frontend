@@ -1,4 +1,4 @@
-const initialState = ["jb"]
+const initialState = ["lol", "jgkdsf", "gkdsfjh", "gdsf"];
 
 const itemsReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -7,4 +7,4 @@ const itemsReducer = (state = initialState, action) => {
   }
 }
 
-export default itemsReducer 
+export default itemsReducer;
