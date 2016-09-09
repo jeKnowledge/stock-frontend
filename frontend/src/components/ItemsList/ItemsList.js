@@ -13,7 +13,12 @@ class ItemsList extends React.Component {
 
   renderItems() {
     return this.props.items.all.map((item) => {
-      return(<Item key={item.id} item={item} />)
+      return(
+        <Item
+          key={item.id}
+          item={item}
+          />
+      );
     });
   }
   

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import actions from 'redux/actions/modals'
-import Item from './Item'
+
+import NewItemModal from './NewItemModal'
 
 const mapDispatchToProps = {
   toggleModal: actions.toggleModal
@@ -8,4 +9,4 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Item);
+export default connect(mapStateToProps, mapDispatchToProps)(NewItemModal);
