@@ -3,7 +3,7 @@ export default (store) => ({
 
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
-      const ItemsView = require('./components/ItemsView').default
+      const ItemsView = require('./ItemsView').default
       cb(null, ItemsView)
     }, 'items')
   }

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
+import requireAuthentication from '../../../utils/requireAuthentication' 
 import actions from 'redux/actions/modals'
-import requireAuthentication from '../../../requireAuthentication' 
+
 import ItemsView from './ItemsView'
 
 const mapDispatchToProps = {

@@ -2,8 +2,8 @@ import React from 'react'
 import classes from './ItemsView.scss'
 
 import ItemsList from 'components/ItemsList'
-import Modal from 'containers/Modal'
-import NewItemForm from 'containers/NewItemForm'
+import Modal from 'components/Modal'
+import NewItemForm from 'components/NewItemForm'
 
 class ItemsView extends React.Component {
   constructor(props) {
