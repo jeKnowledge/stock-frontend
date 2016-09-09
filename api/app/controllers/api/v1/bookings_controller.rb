@@ -19,7 +19,7 @@ module Api::V1
       @booking = Booking.new(booking_params)
 
       if @booking.save
-        render json: @booking, status: :created, location: @booking
+        render json: @booking, status: :created, location: v1_item_path(@booking)
       else
         render json: @booking.erros, status: :unprocessable_entity
       end
@@ -36,7 +36,11 @@ module Api::V1
 
     #DELETE /bookings/1
     def destroy
-      @booking.destroy
+      if @booking.destroy
+        render json: @item, status: :deleted
+      else
+        render json: @item.errors, status: :conflict
+      end
     end
 
     private
@@ -48,6 +52,5 @@ module Api::V1
     def booking_params
       params.require(:booking).permit(:user_id, :item_id, :start_date, :end_date)
     end
-
   end
 end

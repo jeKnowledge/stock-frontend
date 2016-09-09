@@ -19,9 +19,9 @@ module Api::V1
       @item = Item.new(item_params)
 
       if @item.save
-        render json: @item, status: :created, location: @item
+        render json: @item, status: :created, location: v1_item_path(@item)
       else
-        render json: @item.erros, status: :unprocessable_entity
+        render json: @item.errors, status: :unprocessable_entity
       end
     end
 
@@ -36,7 +36,11 @@ module Api::V1
 
     #DELETE /items/1
     def destroy
-      @item.destroy
+      if @item.destroy
+        render json: @item, status: :deleted 
+      else
+        render json: @item.errors, status: :conflict
+      end
     end
 
     private
