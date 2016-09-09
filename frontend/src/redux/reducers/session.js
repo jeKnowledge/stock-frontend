@@ -11,18 +11,21 @@ const initialState = {
 
 export default function sessionReducer(state = initialState, action) {
   switch(action.type) {
-    case 'LOGIN_FETCHING':
+    case 'SIGN_IN_FETCHING':
+    case 'SIGN_UP_FETCHING':
       return Object.assign({}, state, {
         fetching: true
       });
 
-    case 'LOGIN_SUCCESS':
+    case 'SIGN_IN_SUCCESS':
+    case 'SIGN_UP_SUCCESS':
       return Object.assign({}, state, {
         user: action.data,
         fetching: false
       });
 
-    case 'LOGIN_ERROR':
+    case 'SIGN_IN_ERROR':
+    case 'SIGN_UP_ERROR':
       return Object.assign({}, state, {
         fetching: false,
         fetchingError: action.error

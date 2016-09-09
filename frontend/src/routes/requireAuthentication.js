@@ -14,8 +14,8 @@ const requireAuthentication = (Component) => {
 
     checkAuthentication(isAuthenticated) {
       if (!isAuthenticated) {
-        let redirectAfterLogin = location.pathname;
-        this.props.router.push(`/login?next=${redirectAfterLogin}`);
+        let redirectAfterSignIn = location.pathname;
+        this.props.router.push(`/sign_in?next=${redirectAfterSignIn}`);
       }
     }
 

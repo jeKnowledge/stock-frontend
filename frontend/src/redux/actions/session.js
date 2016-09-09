@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
-const loginSuccess = (response) => ({
-  type: 'LOGIN_SUCCESS',
+const signInSuccess = (response) => ({
+  type: 'SIGN_IN_SUCCESS',
   data: {
     id: response.data.id,
     name: response.data.name,
@@ -10,18 +10,18 @@ const loginSuccess = (response) => ({
   }
 })
 
-const loginError = (response) => ({
-  type: 'LOGIN_ERROR',
+const signInError = (response) => ({
+  type: 'SIGN_IN_ERROR',
   error: response.data.message
 })
 
-export const login = ({email, password}) => {
+const signIn = ({email, password}) => {
   return (dispatch, getState) => {
     const fetching = getState().session.fetching;
     if (fetching) return;
 
     dispatch({
-      type: 'LOGIN_FETCHING'
+      type: 'SIGN_IN_FETCHING'
     });
 
     let options = {
@@ -37,16 +37,63 @@ export const login = ({email, password}) => {
 
     return axios.request(options)
       .then((response) => {
-        dispatch(loginSuccess(response));
+        dispatch(signInSuccess(response));
       })
       .catch((error) => {
-        dispatch(loginError(error.response));
+        dispatch(signInError(error.response));
+      });
+  }
+}
+
+const signUpSuccess = (response) => ({
+  type: 'SIGN_UP_SUCCESS',
+  data: {
+    id: response.data.id,
+    name: response.data.name,
+    email: response.data.email,
+    accessToken: response.data.access_token
+  }
+});
+
+const signUpError = (response) => ({
+  type: 'SIGN_UP_ERROR',
+  error: response.data.message
+});
+
+const signUp = ({name, email, password}) => {
+  return (dispatch, getState) => {
+    const fetching = getState().session.fetching;
+    if (fetching) return;
+
+    dispatch({
+      type: 'SIGN_UP_FETCHING'
+    });
+
+    let options = {
+      url: 'http://localhost:4000/v1/users', // FIX hardcoded url
+      method: 'post',
+      data: {
+        user: {
+          name,
+          email,
+          password
+        }
+      }
+    }
+
+    return axios.request(options)
+      .then((response) => {
+        dispatch(signUpSuccess(response));
+      })
+      .catch((error) => {
+        dispatch(signUpError(error.response));
       });
   }
 }
 
 const actions = {
-  login
+  signIn,
+  signUp
 }
 
 export default actions;

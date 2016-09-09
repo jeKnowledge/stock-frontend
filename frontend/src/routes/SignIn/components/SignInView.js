@@ -1,17 +1,17 @@
 import { connect } from 'react-redux'
-import actions from 'redux/actions/session'
 import requireUnauthentication from '../../requireUnauthentication' 
+import actions from 'redux/actions/session'
 
-import LoginForm from 'components/LoginForm'
+import SignInForm from 'components/SignInForm'
 
 const mapDispatchToProps = {
-  login: actions.login,
+  signIn: actions.signIn,
 };
 
 const mapStateToProps = (state) => ({
   session: state.session
 });
 
-let connectedComponent = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+let connectedComponent = connect(mapStateToProps, mapDispatchToProps)(SignInForm);
 
 export default requireUnauthentication(connectedComponent);

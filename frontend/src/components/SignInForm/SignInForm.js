@@ -1,7 +1,7 @@
 import React from 'react'
-import classes from './LoginForm.scss'
+import classes from './SignInForm.scss'
 
-class LoginForm extends React.Component {
+class SignInForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { email: '', password: '' };
@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.signIn(this.state);
     this.setState({ email: '', password: '' });
   }
 
@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
   render() {
     return(
       <form onSubmit={ (e) => this.handleSubmit(e) }>
-        <h1>Login Form</h1>
+        <h1>Sign In Form</h1>
 
         { this.renderError() }
 
@@ -69,4 +69,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm 
+export default SignInForm; 
