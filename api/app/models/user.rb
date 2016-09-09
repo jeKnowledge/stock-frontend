@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
+  validates :password, presence: true
 
   def expire_access_token!
     self.access_token_expiration_date = Time.now
@@ -27,5 +28,9 @@ class User < ApplicationRecord
       token = SecureRandom.base64.tr('+/=', 'Qrt')
       break token unless User.exists?(access_token: token)
     end
+  end
+
+  def access_token_expired?
+    self.access_token_expiration_date < Time.now
   end
 end
