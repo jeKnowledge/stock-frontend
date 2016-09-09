@@ -1,8 +1,8 @@
-# stock-api
+# stock-frontend
 
 ## Development 
 
-To get the api up and running locally install Docker and then:
+To get the frontend up and running locally install Docker and then:
 
 ```shell
 $ docker-compose up

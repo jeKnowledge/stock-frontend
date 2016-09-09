@@ -6,13 +6,17 @@ default: &default
 
 development:
   <<: *default
-  database: stock_development 
-  username: stock 
+  database: postgres
+  username: postgres 
+  password:
+  host: db
 
 test:
   <<: *default
-  database: stock_test
-  username: stock 
+  database: postgres
+  username: postgres 
+  password:
+  host: db
 
 production:
   <<: *default
