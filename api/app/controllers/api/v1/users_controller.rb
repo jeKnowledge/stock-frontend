@@ -6,9 +6,9 @@ module Api::V1
       @user = User.new(user_params)
 
       if @user.save
-        render json: { access_token: @user.access_token }, status: :created
+        render json: @user, status: :created
       else
-        render json: @user.errors, status: :unprocessable_entity
+        render json: { errors: @user.errors }, status: :unprocessable_entity
       end
     end
 
@@ -16,13 +16,13 @@ module Api::V1
       if current_user.update(user_params)
         render json: @user
       else
-        render json: @user.errors, status: :unprocessable_entity
+        render json: { errors: @user.errors }, status: :unprocessable_entity
       end
     end
 
     def destroy
       current_user.destroy
-      render json: 'User deleted', status: :ok
+      render json: { message: 'User deleted' }, status: :ok
     end
 
     private

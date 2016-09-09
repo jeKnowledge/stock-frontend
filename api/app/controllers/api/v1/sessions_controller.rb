@@ -3,8 +3,8 @@ module Api::V1
     skip_before_action :authenticate_user, only: :create
 
     def create
-      user = User.where(email: params[:email],
-                        password: params[:password]).first
+      user = User.find_by(email: user_params[:email])
+                 .try(:authenticate, user_params[:password])
 
       if user 
         user.refresh_access_token!
@@ -17,6 +17,12 @@ module Api::V1
     def destroy
       current_user.expire_access_token!
       render json: { message: 'Logged out' }, status: :ok
+    end
+
+    private
+
+    def user_params
+      params.require(:user).permit(:email, :password)
     end
   end
 end

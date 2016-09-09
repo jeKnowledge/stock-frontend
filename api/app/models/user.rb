@@ -1,12 +1,15 @@
 class User < ApplicationRecord
+  has_secure_password
+
   before_create :set_access_token
 
   has_many :bookings 
   has_many :items, through: :bookings
 
   validates :name, presence: true
-  validates :email, presence: true
-  validates :password, presence: true
+  validates :email, presence: true,
+                    uniqueness: true
+  validates :password_digest, presence: true
 
   def expire_access_token!
     self.access_token_expiration_date = Time.now
@@ -25,7 +28,7 @@ class User < ApplicationRecord
 
   def generate_access_token
     loop do
-      token = SecureRandom.base64.tr('+/=', 'Qrt')
+      token = SecureRandom.hex(32)
       break token unless User.exists?(access_token: token)
     end
   end
