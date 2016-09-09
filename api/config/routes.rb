@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
         # Bookings
         resources :bookings, except: [:index]
+        put 'bookings/:id/return', to: 'bookings#return'
 
         # Categories
         resources :categories

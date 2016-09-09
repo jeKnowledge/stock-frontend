@@ -1,6 +1,6 @@
 module Api::V1
   class BookingsController < ApplicationController
-    before_action :set_booking, only: [:show, :update, :destroy] 
+    before_action :set_booking, only: [:show, :update, :destroy, :return] 
 
     # GET /bookings
     def index
@@ -14,7 +14,7 @@ module Api::V1
       @booking = Booking.new(booking_params)
 
       if @booking.save
-        render json: @booking, status: :created, location: v1_item_path(@booking)
+        render json: @booking, status: :created, location: v1_booking_path(@booking)
       else
         if @booking.errors.has_key?(:item_already_booked)
           @waiting_queue = WaitingQueue.create(item: @booking.item,
@@ -38,10 +38,15 @@ module Api::V1
     #DELETE /bookings/1
     def destroy
       if @booking.destroy
-        render json: @item, status: :deleted
+        render json: @booking, status: :deleted
       else
-        render json: @item.errors, status: :conflict
+        render json: @booking.errors, status: :conflict
       end
+    end
+
+    def return
+      @booking.return!
+      render json: @booking, status: :ok
     end
 
     private
