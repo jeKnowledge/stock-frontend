@@ -1,6 +1,7 @@
-const toggleModal = (id) => ({
+const toggleModal = (id, data = {}) => ({
   type: 'TOGGLE_MODAL',
-  id
+  id,
+  data
 })
 
 const actions = {

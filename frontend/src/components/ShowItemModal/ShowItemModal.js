@@ -10,11 +10,15 @@ class ShowItemModal extends React.Component {
   }
 
   render() {
+    let modal = this.props.modals['item-show'];
+    if (modal === undefined) return null;
+
+    let item = this.props.items.byID[modal.itemID];
     return(
       <Modal
         id="item-show"
-        title="Item">
-        <ShowItem />
+        title={item.name}>
+        <ShowItem item={item}/>
       </Modal>
     );
   }

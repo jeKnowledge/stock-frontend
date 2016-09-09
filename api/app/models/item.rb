@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   # Associations 
   has_many :bookings
-  has_many :waiting_queue_entries
+  has_many :waiting_queue_entries, class_name: 'WaitingQueue'
   has_many :users, through: :bookings
   has_many :waiting_users, through: :waiting_queue_entries
   has_many :item_categories
@@ -21,8 +21,7 @@ class Item < ApplicationRecord
   end
 
   def oldest_waiting_user
-    # FIX this might break .user
-    self.waiting_queue_entries.order(:created_at).first.user
+    self.waiting_queue_entries.order(:created_at).first&.user
   end
 
   def notify_oldest_waiting_user

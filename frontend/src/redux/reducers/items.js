@@ -1,5 +1,6 @@
 const initialState = {
-  all: new Array,
+  all: [],
+  byID: {},
   fetching: false,
   fetchingError: null
 };
@@ -14,9 +15,13 @@ const itemsReducer = (state = initialState, action) => {
       });
 
     case 'NEW_ITEM_SUCCESS':
-      let newItems = [action.item, ...state.all];
+      let newAll = [action.item.id, ...state.all]; 
+      let newByID = Object.assign({}, state.byID);
+      newByID[action.item.id] = action.item;
+
       return Object.assign({}, state, {
-        all: newItems,
+        all: newAll,
+        byID: newByID,
         fetching: false 
       });
 
@@ -27,8 +32,16 @@ const itemsReducer = (state = initialState, action) => {
       });
 
     case 'FETCH_ITEMS_SUCCESS':
+      newAll = [];
+      newByID = {};
+      action.items.forEach((i) => {
+        newAll = [i.id, ...newAll];
+        newByID[i.id] = i;
+      });
+
       return Object.assign({}, state, {
-        all: action.items,
+        all: newAll,
+        byID: newByID,
         fetching: false
       });
 

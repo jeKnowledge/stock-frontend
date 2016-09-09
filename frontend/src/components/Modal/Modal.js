@@ -4,11 +4,11 @@ import classes from './Modal.scss'
 class Modal extends React.Component {
   constructor(props) {
     super(props)
-    this.displayClass = this.props.modals[this.props.id] ? classes.shown : classes.hidden;
+    this.displayClass = this.props.modals[this.props.id] && this.props.modals[this.props.id].visible ? classes.shown : classes.hidden;
   }
 
   componentWillUpdate(nextProps, nextState) {
-    this.displayClass = nextProps.modals[nextProps.id] ? classes.shown : classes.hidden;
+    this.displayClass = nextProps.modals[nextProps.id] && nextProps.modals[nextProps.id].visible ? classes.shown : classes.hidden;
   }
 
   render() {

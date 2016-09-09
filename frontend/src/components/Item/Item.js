@@ -8,7 +8,7 @@ const Item = (props) => (
         className="card-img-top img-fluid"
         src={props.item.photo_url}
         alt="Card image cap" 
-        onClick={ (e) => {props.toggleModal('item-show')} }
+        onClick={ (e) => {props.toggleModal('item-show', { itemID: props.item.id })} }
       />
 
       <div className="card-block">
