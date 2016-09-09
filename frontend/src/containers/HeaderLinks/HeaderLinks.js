@@ -53,7 +53,7 @@ class HeaderLinks extends React.Component {
         <a 
           href="#"
           className="nav-link"
-          onClick={ (e) => { this.props.toggleModal('add-item') } }>
+          onClick={ (e) => { this.props.toggleModal('new-item') } }>
           Add Item
         </a>
       </li>

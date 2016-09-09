@@ -7,9 +7,13 @@ class ItemsList extends React.Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.props.fetchItems();
+  }
+
   renderItems() {
-    return this.props.items.map((item) => {
-      return(<Item key={item.id} data={item} />)
+    return this.props.items.all.map((item) => {
+      return(<Item key={item.id} item={item} />)
     });
   }
   

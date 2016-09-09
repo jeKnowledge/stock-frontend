@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
 import actions from 'redux/actions/items'
-import ItemsList from './ItemsList'
+import NewItemForm from './NewItemForm'
 
 const mapDispatchToProps = {
-  fetchItems: actions.fetchItems
+  createItem: actions.createItem
 };
 
 const mapStateToProps = (state) => ({
   items: state.items
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);
+export default connect(mapStateToProps, mapDispatchToProps)(NewItemForm);
