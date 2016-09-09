@@ -23,7 +23,8 @@ export default function sessionReducer(state = initialState, action) {
     case 'SIGN_UP_SUCCESS':
       return Object.assign({}, state, {
         user: action.data,
-        fetching: false
+        fetching: false,
+        fetchingError: null
       });
 
     case 'SIGN_IN_ERROR':
