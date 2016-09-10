@@ -55,7 +55,7 @@ const fetchItemsSuccess = (response) => ({
 
 const fetchItemsError = (response) => ({
   type: 'FETCH_ITEMS_ERROR',
-  items: response.data.message
+  error: response.data.message
 });
 
 const fetchItems = () => {
@@ -87,25 +87,26 @@ const fetchItems = () => {
 }
 
 const bookSuccess = (response) => ({
-  type: 'BOOK_SUCCESS'
+  type: 'BOOK_SUCCESS',
+  data: response.data
 });
 
 const bookError = (response) => ({
-  type: 'BOOK_ERROR'
+  type: 'BOOK_ERROR',
+  error: response.data.message
 });
 
-const book = ({ item_id, start_date, end_date }) => {
+const book = ({ item_id, startDate, endDate }) => {
   return (dispatch, getState) => {
-    // TODO protect against consecutive requests
-    //const fetching = getState().items.fetching;
-    //if (fetching) return;
+    const fetching = getState().items.fetching;
+    if (fetching) return;
 
-    //dispatch({
-      //type: 'ITEMS_FETCHING'
-    //});
+    dispatch({
+      type: 'BOOKING_FETCHING'
+    });
 
     let accessToken = getState().session.accessToken;
-    //let user_id = getState().session.user.id;
+    let user_id = getState().session.user.id;
     let options = {
       url: 'http://localhost:4000/v1/bookings', // FIX hardcoded url
       method: 'post',
@@ -114,10 +115,10 @@ const book = ({ item_id, start_date, end_date }) => {
       },
       data: {
         booking: {
-          user_id: 1,
+          user_id,
           item_id,
-          start_date, 
-          end_date
+          start_date: startDate, 
+          end_date: endDate
         }
       }
     }

@@ -16,4 +16,4 @@ CoreLayout.propTypes = {
   children: React.PropTypes.element.isRequired
 }
 
-export default CoreLayout
+export default CoreLayout;

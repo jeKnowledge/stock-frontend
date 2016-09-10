@@ -4,7 +4,7 @@ import classes from './NewBookingForm.scss'
 class NewBookingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { item_id: this.props.itemID, item_idstartDate: '', endDate: '' };
+    this.state = { item_id: this.props.itemID, startDate: '', endDate: '' };
   }
 
   handleSubmit(e) {

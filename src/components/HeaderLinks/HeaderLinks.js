@@ -8,6 +8,13 @@ class HeaderLinks extends React.Component {
     this.isAuthenticated = props.session.accessToken !== null;
   }
 
+  componentWillMount() {
+    // FIX move this to another bigger component
+    if (this.isAuthenticated) {
+      this.props.refreshSession()
+    }
+  }
+
   componentWillUpdate(nextProps, nextState) {
     this.isAuthenticated = nextProps.session.accessToken !== null;
   }

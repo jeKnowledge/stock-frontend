@@ -15,12 +15,14 @@ export default function sessionReducer(state = initialState, action) {
   switch(action.type) {
     case 'SIGN_IN_FETCHING':
     case 'SIGN_UP_FETCHING':
+    case 'SESSION_REFRESH_FETCHING':
       return Object.assign({}, state, {
         fetching: true
       });
 
     case 'SIGN_IN_SUCCESS':
     case 'SIGN_UP_SUCCESS':
+    case 'SESSION_REFRESH_SUCCESS':
       return Object.assign({}, state, {
         user: action.user,
         accessToken: action.accessToken,

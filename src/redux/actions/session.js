@@ -121,10 +121,50 @@ const logout = () => {
   }
 }
 
+const refreshSessionSuccess = (response) => ({
+  type: 'SESSION_REFRESH_SUCCESS',
+  user: {
+    id: response.data.id,
+    name: response.data.name,
+    email: response.data.email
+  },
+  accessToken: response.data.access_token
+})
+
+const refreshSession = () => {
+  return (dispatch, getState) => {
+    const fetching = getState().session.fetching;
+    if (fetching) return;
+
+    dispatch({
+      type: 'SESSION_REFRESH_FETCHING'
+    });
+
+    let accessToken = getState().session.accessToken;
+    let options = {
+      url: 'http://localhost:4000/v1/sessions', // FIX hardcoded url
+      method: 'put',
+      headers: {
+        'Authorization': `Token token=${accessToken}`,
+      }
+    }
+
+    return axios.request(options)
+      .then((response) => {
+        dispatch(refreshSessionSuccess(response));
+        setCookie('stock_access_token', response.data.access_token, 1);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
+}
+
 const actions = {
   signIn,
   signUp,
-  logout
+  logout,
+  refreshSession
 }
 
 export default actions;
