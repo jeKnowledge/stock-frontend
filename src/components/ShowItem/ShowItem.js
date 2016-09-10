@@ -1,11 +1,24 @@
 import React from 'react'
 import classes from './ShowItem.scss'
 
+import WaitingQueueForm from 'components/WaitingQueueForm'
 import NewBookingForm from 'components/NewBookingForm'
 
 class ShowItem extends React.Component { 
   constructor(props) {
     super(props);
+  }
+
+  renderBookingOrWaitingQueueForm() {
+    if (this.props.item.booked) {
+      return(
+        <WaitingQueueForm itemID={this.props.item.id} />
+      )
+    } else {
+      return(
+        <NewBookingForm itemID={this.props.item.id} />
+      )
+    }
   }
 
   renderBookings() {
@@ -44,7 +57,7 @@ class ShowItem extends React.Component {
             />
           </div>
           <div className="col-md-6">
-            <NewBookingForm itemID={this.props.item.id} />
+            { this.renderBookingOrWaitingQueueForm() }
           </div>
         </div>
 
