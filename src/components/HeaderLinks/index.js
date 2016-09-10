@@ -5,8 +5,7 @@ import HeaderLinks from './HeaderLinks'
 
 const mapDispatchToProps = {
   logout: sessionActions.logout,
-  toggleModal: modalsActions.toggleModal,
-  refreshSession: sessionActions.refreshSession
+  toggleModal: modalsActions.toggleModal
 };
 
 const mapStateToProps = (state) => ({

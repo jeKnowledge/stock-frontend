@@ -1,95 +1,58 @@
 const initialState = {
   all: [],
   byID: {},
-  fetching: false,
-  fetchingError: null
 };
 
 const itemsReducer = (state = initialState, action) => {
-  switch(action.type) {
-    // FIX same state value for two different actions can be dangerous
-    case 'NEW_ITEM_FETCHING':
-    case 'ITEMS_FETCHING':
-    case 'BOOKING_FETCHING':
-    case 'WAITING_QUEUE_FETCHING':
-      return Object.assign({}, state, {
-        fetching: true
-      });
+  let newAll = [];
+  let newByID = {};
 
-    case 'NEW_ITEM_SUCCESS':
-      let newAll = [action.item.id, ...state.all]; 
-      let newByID = Object.assign({}, state.byID);
+  switch(action.type) {
+    case 'CREATE_ITEM_SUCCESS':
+      newAll = [action.item.id, ...state.all]; 
+      newByID = Object.assign({}, state.byID);
       newByID[action.item.id] = action.item;
 
       return Object.assign({}, state, {
         all: newAll,
-        byID: newByID,
-        fetching: false 
-      });
-
-    case 'NEW_ITEM_ERROR':
-      return Object.assign({}, state, {
-        fetching: false,
-        fetchingError: action.error
+        byID: newByID
       });
 
     case 'FETCH_ITEMS_SUCCESS':
-      newAll = [];
-      newByID = {};
-      action.items.forEach((i) => {
-        newAll = [i.id, ...newAll];
-        newByID[i.id] = i;
+      action.items.forEach((item) => {
+        newAll.push(item.id);
+        newByID[item.id] = item;
       });
 
       return Object.assign({}, state, {
         all: newAll,
-        byID: newByID,
-        fetching: false
+        byID: newByID
       });
 
-    case 'FETCH_ITEMS_ERROR':
-      return Object.assign({}, state, {
-        fetching: false,
-        fetchingError: action.error
-      });
-
-    case 'BOOK_SUCCESS':
-      let newItem = state.byID[action.data.item_id]; 
-      newItem.bookings = [action.data, ...newItem.bookings];
+    case 'CREATE_BOOKING_SUCCESS':
+      // FIX improve this with a bookings reducer
+      let newItem = state.byID[action.booking.item_id]; 
+      newItem.bookings = [action.booking, ...newItem.bookings];
 
       newByID = Object.assign({}, state.byID);
-      newByID[action.data.item_id] = newItem;
+      newByID[action.booking.item_id] = newItem;
 
       return Object.assign({}, state, {
         byID: newByID,
-        fetching: false
       });
 
-    case 'BOOK_ERROR':
-      return Object.assign({}, state, {
-        fetching: false,
-        fetchingError: action.error
-      });
-
-    case 'WAITING_QUEUE_SUCCESS':
-      newItem = state.byID[action.data.item_id]; 
-      newItem.waiting_queue = [action.data, ...newItem.waiting_queue];
+    case 'ENTER_WAITING_QUEUE_SUCCESS':
+      // FIX improve this with a waiting queue reducer
+      newItem = state.byID[action.waiting_queue.item_id]; 
+      newItem.waiting_queue = [action.waiting_queue, ...newItem.waiting_queue];
 
       newByID = Object.assign({}, state.byID);
-      newByID[action.data.item_id] = newItem;
+      newByID[action.waiting_queue.item_id] = newItem;
 
       return Object.assign({}, state, {
         byID: newByID,
         fetching: false
       });
-
-
-    case 'WAITING_QUEUE_ERROR':
-      return Object.assign({}, state, {
-        fetching: false,
-        fetchingError: action.error
-      });
-
 
     default:
       return state;

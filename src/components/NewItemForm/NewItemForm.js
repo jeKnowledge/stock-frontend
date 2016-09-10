@@ -22,10 +22,11 @@ class NewItemForm extends React.Component {
   }
 
   renderError() {
-    if (this.props.items.fetchingError === null) return '';
+    let apiState = this.props.api['createItem'] || {};
+    if (apiState.message === null || apiState.message === undefined) return '';
     return(
       <p className="bg-danger">
-        { this.props.items.fetchingError }
+        { apiState.message }
       </p>
     )
   }

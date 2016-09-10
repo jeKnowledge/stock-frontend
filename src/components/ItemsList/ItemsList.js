@@ -18,7 +18,7 @@ class ItemsList extends React.Component {
         <Item
           key={id}
           item={itemsByID[id]}
-          />
+        />
       );
     });
   }

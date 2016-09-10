@@ -9,9 +9,8 @@ class NewBookingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.book(this.state);
+    this.props.createBooking(this.state);
     this.setState({ startDate: '', endDate: '' });
-    //this.props.onSubmit();
   }
 
   handleChange(e) {
@@ -22,16 +21,17 @@ class NewBookingForm extends React.Component {
   }
 
   //renderError() {
-    //if (this.props.items.fetchingError === null) return '';
+    //let apiState = this.props.api['createBooking'] || {};
+    //if (apiState.message === null || apiState.message === undefined) return '';
     //return(
       //<p className="bg-danger">
-        //{ this.props.items.fetchingError }
+        //{ apiState.message }
       //</p>
     //)
   //}
 
   render() {
-    // ADD { this.renderError() }
+    // TODO render de erros { this.renderError() }
     
     return(
       <form onSubmit={ (e) => this.handleSubmit(e) }>

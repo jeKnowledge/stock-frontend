@@ -5,18 +5,11 @@ import classes from './HeaderLinks.scss'
 class HeaderLinks extends React.Component {
   constructor(props) {
     super(props)
-    this.isAuthenticated = props.session.accessToken !== null;
-  }
-
-  componentWillMount() {
-    // FIX move this to another bigger component
-    if (this.isAuthenticated) {
-      this.props.refreshSession()
-    }
+    this.isAuthenticated = props.session.access_token !== null;
   }
 
   componentWillUpdate(nextProps, nextState) {
-    this.isAuthenticated = nextProps.session.accessToken !== null;
+    this.isAuthenticated = nextProps.session.access_token !== null;
   }
 
   renderSignInLink() {

@@ -7,7 +7,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => ({
-  items: state.items
+  api: state.api
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewItemForm);

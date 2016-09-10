@@ -3,11 +3,11 @@ import actions from 'redux/actions/items'
 import NewBookingForm from './NewBookingForm'
 
 const mapDispatchToProps = {
-  book: actions.book
+  createBooking: actions.createBooking
 };
 
 const mapStateToProps = (state) => ({
-  items: state.items
+  api: state.api
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewBookingForm);

@@ -2,46 +2,23 @@ const blankUser = {
   id: null,
   name: null,
   email: null,
+  slack_handler: null
 }
 
-const initialState = {
+export const initialState = {
   user: blankUser,
-  accessToken: null,
-  fetching: false,
-  fetchingError: null
+  access_token: null,
 }
 
 export default function sessionReducer(state = initialState, action) {
   switch(action.type) {
-    case 'SIGN_IN_FETCHING':
-    case 'SIGN_UP_FETCHING':
-    case 'SESSION_REFRESH_FETCHING':
-      return Object.assign({}, state, {
-        fetching: true
-      });
-
     case 'SIGN_IN_SUCCESS':
     case 'SIGN_UP_SUCCESS':
     case 'SESSION_REFRESH_SUCCESS':
-      return Object.assign({}, state, {
-        user: action.user,
-        accessToken: action.accessToken,
-        fetching: false,
-        fetchingError: null
-      });
-
-    case 'SIGN_IN_ERROR':
-    case 'SIGN_UP_ERROR':
-      return Object.assign({}, state, {
-        fetching: false,
-        fetchingError: action.error
-      });
+      return Object.assign({}, state, action.session);
 
     case 'LOGOUT_SUCCESS':
-      return Object.assign({}, state, {
-        user: blankUser,
-        accessToken: null
-      });
+      return Object.assign({}, state, initialState);
 
     default:
       return state;

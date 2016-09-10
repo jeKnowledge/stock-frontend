@@ -12,16 +12,17 @@ class WaitingQueueForm extends React.Component {
   }
 
   //renderError() {
-    //if (this.props.items.fetchingError === null) return '';
+    //let apiState = this.props.api['enterWaitingQueue'] || {};
+    //if (apiState.message === null || apiState.message === undefined) return '';
     //return(
       //<p className="bg-danger">
-        //{ this.props.items.fetchingError }
+        //{ apiState.message }
       //</p>
     //)
   //}
 
   render() {
-    // ADD { this.renderError() }
+    // TODO add error rendering { this.renderError() }
     
     return(
       <form onSubmit={ (e) => this.handleSubmit(e) }>

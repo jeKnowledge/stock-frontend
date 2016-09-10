@@ -3,6 +3,7 @@ import { routerReducer as router } from 'react-router-redux'
 import session from '../redux/reducers/session' 
 import items from '../redux/reducers/items'
 import modals from '../redux/reducers/modals'
+import api from '../redux/reducers/api'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
@@ -10,6 +11,7 @@ export const makeRootReducer = (asyncReducers) => {
     session,
     items,
     modals,
+    api,
     ...asyncReducers
   });
 }

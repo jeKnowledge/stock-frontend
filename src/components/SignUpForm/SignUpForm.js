@@ -22,10 +22,11 @@ class SignUpForm extends React.Component {
   }
 
   renderError() {
-    if (this.props.session.fetchingError === null) return '';
+    let apiState = this.props.api['signUp'] || {};
+    if (apiState.message === null || apiState.message === undefined) return '';
     return(
       <p className="bg-danger">
-        { this.props.session.fetchingError }
+        { apiState.message }
       </p>
     )
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './ShowItem.scss'
+import styles from './ShowItem.scss'
 
 import WaitingQueueForm from 'components/WaitingQueueForm'
 import NewBookingForm from 'components/NewBookingForm'
@@ -47,8 +47,8 @@ class ShowItem extends React.Component {
 
   render() {
     return(
-      <div className={ `container-fluid ${classes.showItem}` }>
-        <div className="row">
+      <div className={ `container-fluid` }>
+        <div className={`row ${styles.row}`}>
           <div className="col-md-6">
             <img
               className="img-fluid"
@@ -61,14 +61,14 @@ class ShowItem extends React.Component {
           </div>
         </div>
 
-        <div className="row">
+        <div className={`row ${styles.row}`}>
           <h4>Old bookings</h4>
           <ul className="list-gtoup">
             { this.renderBookings() }
           </ul>
         </div>
 
-        <div className="row">
+        <div className={`row ${styles.row}`}>
           <h4>Waiting Queue</h4>
           <ul className="list-gtoup">
             { this.renderWaitingQueue() }
