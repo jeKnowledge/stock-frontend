@@ -11,7 +11,7 @@ const signUpSuccess = (response) => ({
       email: response.data.user.email,
       slack_handler: response.data.user.slack_handler
     },
-    access_token: response.data.access_token
+    access_token: response.data.user.access_token
   }
 });
 

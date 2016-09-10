@@ -4,6 +4,7 @@ import ShowItem from './ShowItem'
 const mapDispatchToProps = {};
 
 const mapStateToProps = (state) => ({
+  session: state.session,
   items: state.items
 });
 

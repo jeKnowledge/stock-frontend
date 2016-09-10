@@ -43,7 +43,6 @@ const enterWaitingQueue = (item_id) => {
         dispatch(enterWaitingQueueSuccess(response));
       })
       .catch((error) => {
-        console.log(error)
         dispatch(enterWaitingQueueError(error.response));
       });
   }

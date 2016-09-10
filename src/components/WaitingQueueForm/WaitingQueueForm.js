@@ -11,25 +11,25 @@ class WaitingQueueForm extends React.Component {
     this.props.enterWaitingQueue(this.props.itemID);
   }
 
-  //renderError() {
-    //let apiState = this.props.api['enterWaitingQueue'] || {};
-    //if (apiState.message === null || apiState.message === undefined) return '';
-    //return(
-      //<p className="bg-danger">
-        //{ apiState.message }
-      //</p>
-    //)
-  //}
+  renderError() {
+    let apiState = this.props.api['enterWaitingQueue'] || {};
+    if (apiState.message === null || apiState.message === undefined) return '';
+    return(
+      <p className="tag tag-danger">
+        { apiState.message }
+      </p>
+    )
+  }
 
   render() {
-    // TODO add error rendering { this.renderError() }
-    
     return(
       <form onSubmit={ (e) => this.handleSubmit(e) }>
+        { this.renderError() }
+
         <input
           className="btn btn-block btn-success"
           type="submit"
-          value="Enter on the waiting queue"
+          value="Let me know when the item is available"
         />
       </form>
     )

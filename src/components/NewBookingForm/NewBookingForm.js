@@ -10,7 +10,6 @@ class NewBookingForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createBooking(this.state);
-    this.setState({ startDate: '', endDate: '' });
   }
 
   handleChange(e) {
@@ -20,23 +19,22 @@ class NewBookingForm extends React.Component {
     this.setState(newState);
   }
 
-  //renderError() {
-    //let apiState = this.props.api['createBooking'] || {};
-    //if (apiState.message === null || apiState.message === undefined) return '';
-    //return(
-      //<p className="bg-danger">
-        //{ apiState.message }
-      //</p>
-    //)
-  //}
+  renderError() {
+    let apiState = this.props.api['createBooking'] || {};
+    if (apiState.message === null || apiState.message === undefined) return '';
+    return(
+      <p className="tag tag-danger">
+        { apiState.message }
+      </p>
+    )
+  }
 
   render() {
-    // TODO render de erros { this.renderError() }
-    
     return(
       <form onSubmit={ (e) => this.handleSubmit(e) }>
+        <p><b>Book</b> this item from</p>
+
         <div className="form-group">
-          <label>From</label>
           <input
             className="form-control"
             type="date"
@@ -45,8 +43,9 @@ class NewBookingForm extends React.Component {
           />
         </div>
 
+        <p>to</p>
+
         <div className="form-group">
-          <label>To</label>
           <input
             className="form-control"
             type="date"
@@ -54,6 +53,8 @@ class NewBookingForm extends React.Component {
             onChange={ (e) => this.handleChange(e) }
           />
         </div>
+
+        { this.renderError() }
 
         <input
           className="btn btn-block btn-success"

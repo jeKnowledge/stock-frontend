@@ -39,7 +39,6 @@ const createItem = ({name, photoUrl}) => {
 
     return axios.request(options)
       .then((response) => {
-        console.log(response)
         dispatch(fetchItemsSuccess(response));
       })
       .catch((error) => {

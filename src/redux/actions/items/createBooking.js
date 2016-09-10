@@ -45,7 +45,6 @@ const createBooking = ({ item_id, startDate, endDate }) => {
         dispatch(createBookingSuccess(response));
       })
       .catch((error) => {
-        console.log(error)
         dispatch(createBookingError(error.response));
       });
   }

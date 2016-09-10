@@ -15,6 +15,7 @@ const apiReducer = (state = initialState, action) => {
     case 'ENTER_WAITING_QUEUE_FETCHING':
     case 'SIGN_IN_FETCHING':
     case 'SIGN_UP_FETCHING':
+    case 'RETURN_BOOKING_FETCHING':
       updatedState[action.id] = Object.assign({}, emptyAction); 
       updatedState[action.id].fetching = true;
       return Object.assign({}, state, updatedState);
@@ -25,6 +26,7 @@ const apiReducer = (state = initialState, action) => {
     case 'ENTER_WAITING_QUEUE_SUCCESS':
     case 'SIGN_IN_SUCCESS':
     case 'SIGN_UP_SUCCESS':
+    case 'RETURN_BOOKING_SUCCESS':
       updatedState[action.id] = Object.assign({}, emptyAction); 
       return Object.assign({}, state, updatedState);
 
@@ -34,6 +36,7 @@ const apiReducer = (state = initialState, action) => {
     case 'ENTER_WAITING_QUEUE_ERROR':
     case 'SIGN_IN_ERROR':
     case 'SIGN_UP_ERROR':
+    case 'RETURN_BOOKING_ERROR':
       updatedState[action.id] = Object.assign({}, emptyAction); 
       updatedState[action.id].message = action.message; 
       return Object.assign({}, state, updatedState);
