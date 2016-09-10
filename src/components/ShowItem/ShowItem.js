@@ -62,15 +62,15 @@ class ShowItem extends React.Component {
         </div>
 
         <div className={`row ${styles.row}`}>
-          <h4>Old bookings</h4>
-          <ul className="list-gtoup">
+          <h5>Old bookings</h5>
+          <ul className="list-group">
             { this.renderBookings() }
           </ul>
         </div>
 
         <div className={`row ${styles.row}`}>
-          <h4>Waiting Queue</h4>
-          <ul className="list-gtoup">
+          <h5>Waiting Queue</h5>
+          <ul className="list-group">
             { this.renderWaitingQueue() }
           </ul>
         </div>
