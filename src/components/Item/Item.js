@@ -9,6 +9,10 @@ class Item extends React.Component {
     this.dot = props.item.booked ? redDot : greenDot;
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    this.dot = nextProps.item.booked ? redDot : greenDot;
+  }
+
   render() {
     return(
       <div className="col-xs-12 col-md-4">

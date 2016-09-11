@@ -19,7 +19,7 @@ const refreshSession = () => {
   return (dispatch, getState) => {
     let access_token = getState().session.access_token;
     let options = {
-      url: 'http://localhost:4000/v1/sessions', // FIX hardcoded url
+      url: 'https://frozen-beach-71092.herokuapp.com/v1/sessions', // FIX hardcoded url
       method: 'put',
       headers: {
         'Authorization': `Token token=${access_token}`,

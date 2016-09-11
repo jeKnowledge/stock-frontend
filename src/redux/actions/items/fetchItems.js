@@ -24,7 +24,7 @@ const fetchItems = () => {
 
     let access_token = getState().session.access_token;
     let options = {
-      url: 'http://localhost:4000/v1/items', // FIX hardcoded url
+      url: 'https://frozen-beach-71092.herokuapp.com/v1/items', // FIX hardcoded url
       method: 'get',
       headers: {
         'Authorization': `Token token=${access_token}`,

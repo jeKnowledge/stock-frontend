@@ -32,7 +32,7 @@ const signUp = ({name, email, slack_handler, password}) => {
     });
 
     let options = {
-      url: 'http://localhost:4000/v1/users', // FIX hardcoded url
+      url: 'https://frozen-beach-71092.herokuapp.com/v1/users', // FIX hardcoded url
       method: 'post',
       data: {
         user: {

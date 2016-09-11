@@ -24,7 +24,7 @@ const returnBooking = (booking_id) => {
 
     let access_token = getState().session.access_token;
     let options = {
-      url: `http://localhost:4000/v1/bookings/${booking_id}/return`, // FIX hardcoded url
+      url: `https://frozen-beach-71092.herokuapp.com/v1/bookings/${booking_id}/return`, // FIX hardcoded url
       method: 'put',
       headers: {
         'Authorization': `Token token=${access_token}`,

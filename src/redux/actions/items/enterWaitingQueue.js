@@ -25,7 +25,7 @@ const enterWaitingQueue = (item_id) => {
     let access_token = getState().session.access_token;
     let user_id = getState().session.user.id;
     let options = {
-      url: 'http://localhost:4000/v1/waiting_queues', // FIX hardcoded url
+      url: 'https://frozen-beach-71092.herokuapp.com/v1/waiting_queues', // FIX hardcoded url
       method: 'post',
       headers: {
         'Authorization': `Token token=${access_token}`,

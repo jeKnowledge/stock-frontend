@@ -8,7 +8,7 @@ class ItemsList extends React.Component {
   }
 
   componentWillMount() {
-    this.interval = setInterval(() => { this.props.fetchItems() }, 1000);
+    this.interval = setInterval(() => { this.props.fetchItems() }, 2000);
   }
 
   componentWillUnmount() {

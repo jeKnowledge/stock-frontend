@@ -32,7 +32,7 @@ const signIn = ({email, password}) => {
     });
 
     let options = {
-      url: 'http://localhost:4000/v1/sessions', // FIX hardcoded url
+      url: 'https://frozen-beach-71092.herokuapp.com/v1/sessions', // FIX hardcoded url
       method: 'post',
       data: {
         user: {
