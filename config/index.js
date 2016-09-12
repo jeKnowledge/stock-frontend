@@ -131,4 +131,4 @@ if (overrides) {
   debug('No environment overrides found, defaults will be used.')
 }
 
-export default config
+export default config;

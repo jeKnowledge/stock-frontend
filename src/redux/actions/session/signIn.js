@@ -1,5 +1,6 @@
 import * as axios from 'axios';
 import { setCookie } from '../../../utils/cookies'
+import config from '../../../config';
 
 const signInSuccess = (response) => ({
   id: 'signIn',
@@ -32,7 +33,7 @@ const signIn = ({email, password}) => {
     });
 
     let options = {
-      url: 'https://frozen-beach-71092.herokuapp.com/v1/sessions', // FIX hardcoded url
+      url: `${config.api_url}/sessions`,
       method: 'post',
       data: {
         user: {

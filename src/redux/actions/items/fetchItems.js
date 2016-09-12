@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import config from '../../../config';
 
 const fetchItemsSuccess = (response) => ({
   id: 'fetchItems',
@@ -24,7 +25,7 @@ const fetchItems = () => {
 
     let access_token = getState().session.access_token;
     let options = {
-      url: 'https://frozen-beach-71092.herokuapp.com/v1/items', // FIX hardcoded url
+      url: `${config.api_url}/items`,
       method: 'get',
       headers: {
         'Authorization': `Token token=${access_token}`,
@@ -36,6 +37,7 @@ const fetchItems = () => {
         dispatch(fetchItemsSuccess(response));
       })
       .catch((error) => {
+        console.log(error)
         dispatch(fetchItemsError());
       });
   }

@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import config from '../../../config';
 
 const createItemSuccess = (response) => ({
   id: 'createItem',
@@ -24,7 +25,7 @@ const createItem = ({name, photoUrl}) => {
 
     let access_token = getState().session.access_token;
     let options = {
-      url: 'https://frozen-beach-71092.herokuapp.com/v1/items', // FIX hardcoded url
+      url: `${config.api_url}/items`,
       method: 'post',
       headers: {
         'Authorization': `Token token=${access_token}`,

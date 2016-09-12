@@ -1,5 +1,6 @@
 import * as axios from 'axios';
 import { setCookie } from '../../../utils/cookies'
+import config from '../../../config';
 
 const signUpSuccess = (response) => ({
   id: 'signUp',
@@ -32,7 +33,7 @@ const signUp = ({name, email, slack_handler, password}) => {
     });
 
     let options = {
-      url: 'https://frozen-beach-71092.herokuapp.com/v1/users', // FIX hardcoded url
+      url: `${config.api_url}/users`,
       method: 'post',
       data: {
         user: {

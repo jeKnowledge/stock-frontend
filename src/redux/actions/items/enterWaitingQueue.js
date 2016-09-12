@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import config from '../../../config';
 
 const enterWaitingQueueSuccess = (response) => ({
   id: 'enterWaitingQueue',
@@ -25,7 +26,7 @@ const enterWaitingQueue = (item_id) => {
     let access_token = getState().session.access_token;
     let user_id = getState().session.user.id;
     let options = {
-      url: 'https://frozen-beach-71092.herokuapp.com/v1/waiting_queues', // FIX hardcoded url
+      url: `${config.api_url}/waiting_queues`,
       method: 'post',
       headers: {
         'Authorization': `Token token=${access_token}`,

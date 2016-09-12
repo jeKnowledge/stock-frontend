@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import config from '../../../config';
 
 const createBookingSuccess = (response) => ({
   id: 'createBooking',
@@ -25,7 +26,7 @@ const createBooking = ({ item_id, startDate, endDate }) => {
     let access_token = getState().session.access_token;
     let user_id = getState().session.user.id;
     let options = {
-      url: 'https://frozen-beach-71092.herokuapp.com/v1/bookings', // FIX hardcoded url
+      url: `${config.api_url}/bookings`,
       method: 'post',
       headers: {
         'Authorization': `Token token=${access_token}`,
